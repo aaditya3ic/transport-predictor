@@ -8,6 +8,7 @@ from pydantic import BaseModel, Field
 app = FastAPI(
     title="India Domestic Flight & Rail Delay Prediction Engine",
     version="1.0.0",
+    
 )
 
 # Enable CORS for Next.js development and production
@@ -19,10 +20,10 @@ origins = [
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=["https://transport-predictor.onrender.com"],
     allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
+    allow_methods=["https://transport-predictor.onrender.com"],
+    allow_headers=["https://transport-predictor.onrender.com"],
 )
 
 
