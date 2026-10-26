@@ -7,20 +7,20 @@ export async function POST(request: Request) {
     const { hour, month, weather, congestion } = inputs;
 
 
+// Find your fetch call and change it to exactly this format:
 const response = await fetch('/api/predict', {
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',
   },
-
   body: JSON.stringify({
-    mode: "train", 
-    distance: 1200, 
+    mode: "train", // Pass your dynamic variables here instead of the URL
+    route: "t1",
     inputs: {
-      hour: 16,
-      month: 10,
       weather: 3,
-      congestion: 5
+      congestion: 5,
+      hour: 16,
+      season: 2
     }
   })
 });
