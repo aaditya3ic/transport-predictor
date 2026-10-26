@@ -6,13 +6,25 @@ export async function POST(request: Request) {
     const { mode, distance, inputs } = body;
     const { hour, month, weather, congestion } = inputs;
 
-      
-      const mlResponse = await fetch("https://transport-predictor.onrender.com/predict", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ mode, distance, hour, month, weather, congestion })
-      });
-      const data = await mlResponse.json();
+
+const response = await fetch('/api/predict', {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+  },
+
+  body: JSON.stringify({
+    mode: "train", 
+    distance: 1200, 
+    inputs: {
+      hour: 16,
+      month: 10,
+      weather: 3,
+      congestion: 5
+    }
+  })
+});
+      const data = await response.json();
      return NextResponse.json(data);
      
     const peak = (hour >= 7 && hour <= 10) || (hour >= 17 && hour <= 21);
